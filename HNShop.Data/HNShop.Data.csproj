@@ -66,6 +66,10 @@
       <Project>{06089849-6079-47a3-899f-7ddc5e7a36c4}</Project>
       <Name>HNShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HNShop.Model\HNShop.Model.csproj">
+      <Project>{bbda0acb-1de8-430c-86d6-317ad9a4275a}</Project>
+      <Name>HNShop.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
