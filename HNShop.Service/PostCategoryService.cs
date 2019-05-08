@@ -35,8 +35,7 @@ namespace HNShop.Service
 
         public PostCategory Add(PostCategory postCategory)
         {
-            //return _postCategoryRepository.Add(postCategory);
-            return postCategory;
+            return _postCategoryRepository.Add(postCategory);
         }
 
         public PostCategory Delete(int id)

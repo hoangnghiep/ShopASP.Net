@@ -37,8 +37,7 @@ namespace HNShop.Service
 
         public ProductCategory Add(ProductCategory ProductCategory)
         {
-            // return _ProductCategoryRepository.Add(ProductCategory);
-            return ProductCategory;
+            return _ProductCategoryRepository.Add(ProductCategory);
         }
 
         public ProductCategory Delete(int id)
