@@ -19,7 +19,7 @@ namespace HNShop.Model.Abstract
         public string MetaKeyword { set; get; }
 
         [MaxLength(256)]
-        public string MetaDesription { set; get; }
+        public string MetaDescription { set; get; }
 
         public bool Status { set; get; }
     }
