@@ -1,9 +1,10 @@
 ﻿using HNShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace HNShop.Data
 {
-    public class HNShopDbContext : DbContext
+    public class HNShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public HNShopDbContext() : base("HNShopConnection")
         {
@@ -29,9 +30,16 @@ namespace HNShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static HNShopDbContext Create()
+        {
+            return new HNShopDbContext();
+        }
+
         //Ghi de phuong thuc cua he thong
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
