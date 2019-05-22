@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace HNShop.Web.Api
 {
+    [RoutePrefix("api/postcategory")]
     public class PostCategoryController : ApiControllerBase
     {
         private IPostCategoryService _postCategoryService;
