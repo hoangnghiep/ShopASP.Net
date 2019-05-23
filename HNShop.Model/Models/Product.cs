@@ -27,7 +27,7 @@ namespace HNShop.Model.Models
         public string Image { set; get; }
 
         [Column(TypeName ="xml")]
-        public string MoreImage { set; get; }
+        public string MoreImages { set; get; }
         public decimal Price { set; get; }
         public decimal? PromotionPrice { set; get; }
         public int? Warranty { set; get; }
