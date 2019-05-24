@@ -1,10 +1,9 @@
 ﻿/// <reference path="../assets/admin/libs/angular/angular.js" />
 (function () {
     angular.module('hnshop',
-        [   'hnshop.products',
-            'hnshop.product_categories',
-            'hnshop.common']
-    ).config(config);
+        ['hnshop.product_categories',
+            'hnshop.common'])
+        .config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
