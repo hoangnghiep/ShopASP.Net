@@ -2,6 +2,7 @@
 (function () {
     angular.module('hnshop',
         ['hnshop.product_categories',
+            'hnshop.products',
             'hnshop.common'])
         .config(config);
 
