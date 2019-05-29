@@ -11,8 +11,8 @@ namespace HNShop.Model.Models
         public int PostID { set; get; }
 
         [Key]
+        [Column(TypeName = "varchar", Order = 2)]
         [MaxLength(50)]
-        [Column(TypeName = "varchar",Order =2)]
         public string TagID { set; get; }
 
         [ForeignKey("PostID")]

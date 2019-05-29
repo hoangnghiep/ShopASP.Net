@@ -9,7 +9,7 @@ namespace HNShop.Model.Models
     public class ProductCategory : Auditable
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //Tự động tăng ở khóa chính
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { set; get; }
 
         [Required]
@@ -30,8 +30,6 @@ namespace HNShop.Model.Models
         public string Image { set; get; }
 
         public bool? HomeFlag { set; get; }
-
-        //Khai báo lớp ảo.
         public virtual IEnumerable<Product> Products { set; get; }
     }
 }

@@ -17,8 +17,8 @@ namespace HNShop.Model.Models
         public string Name { set; get; }
 
         [Required]
-        [MaxLength(256)]
         [Column(TypeName = "varchar")]
+        [MaxLength(256)]
         public string Alias { set; get; }
 
         [MaxLength(500)]

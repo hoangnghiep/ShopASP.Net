@@ -19,6 +19,7 @@ namespace HNShop.Web.Api
     public class ProductController : ApiControllerBase
     {
         #region Initialize
+
         private IProductService _productService;
 
         public ProductController(IErrorService errorService, IProductService productService)
@@ -27,7 +28,7 @@ namespace HNShop.Web.Api
             this._productService = productService;
         }
 
-        #endregion
+        #endregion Initialize
 
         [Route("getallparents")]
         [HttpGet]
@@ -43,6 +44,7 @@ namespace HNShop.Web.Api
                 return response;
             });
         }
+
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -61,7 +63,7 @@ namespace HNShop.Web.Api
 
         [Route("getall")]
         [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -85,11 +87,10 @@ namespace HNShop.Web.Api
             });
         }
 
-
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -101,7 +102,7 @@ namespace HNShop.Web.Api
                 else
                 {
                     var newProduct = new Product();
-                    newProduct.UpdateProduct(productVm);
+                    newProduct.UpdateProduct(productCategoryVm);
                     newProduct.CreatedDate = DateTime.Now;
                     newProduct.CreatedBy = User.Identity.Name;
                     _productService.Add(newProduct);
@@ -159,10 +160,10 @@ namespace HNShop.Web.Api
                 }
                 else
                 {
-                    var oldProduct = _productService.Delete(id);
+                    var oldProductCategory = _productService.Delete(id);
                     _productService.Save();
 
-                    var responseData = Mapper.Map<Product, ProductViewModel>(oldProduct);
+                    var responseData = Mapper.Map<Product, ProductViewModel>(oldProductCategory);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -184,15 +185,15 @@ namespace HNShop.Web.Api
                 }
                 else
                 {
-                    var listProduct = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
-                    foreach (var item in listProduct)
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
+                    foreach (var item in listProductCategory)
                     {
                         _productService.Delete(item);
                     }
 
                     _productService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listProduct.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
                 }
 
                 return response;

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace HNShop.Web.Infrastructure.Core
 {
@@ -19,6 +17,7 @@ namespace HNShop.Web.Infrastructure.Core
 
         public int TotalPages { set; get; }
         public int TotalCount { set; get; }
+        public int MaxPage { set; get; }
         public IEnumerable<T> Items { set; get; }
     }
 }

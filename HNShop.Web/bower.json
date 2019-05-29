@@ -14,6 +14,7 @@
     "ng-ckeditor": "~0.2.1",
     "ckeditor": "~4.11.4",
     "angular-local-storage": "~0.7.1",
-    "angular-loading-bar": "~0.9.0"
+    "angular-loading-bar": "~0.9.0",
+    "jqueri-ui": "~1.12.1"
   }
 }
