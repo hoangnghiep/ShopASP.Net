@@ -61,29 +61,13 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201905060450176_InitialDB.cs" />
-    <Compile Include="Migrations\201905060450176_InitialDB.Designer.cs">
-      <DependentUpon>201905060450176_InitialDB.cs</DependentUpon>
+    <Compile Include="Migrations\201905300402069_InitialDB.cs" />
+    <Compile Include="Migrations\201905300402069_InitialDB.Designer.cs">
+      <DependentUpon>201905300402069_InitialDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905140801255_AddErrorTable.cs" />
-    <Compile Include="Migrations\201905140801255_AddErrorTable.Designer.cs">
-      <DependentUpon>201905140801255_AddErrorTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905140903547_UpdateDataBase.cs" />
-    <Compile Include="Migrations\201905140903547_UpdateDataBase.Designer.cs">
-      <DependentUpon>201905140903547_UpdateDataBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905141509272_Intergrate-AspnetIdentity.cs" />
-    <Compile Include="Migrations\201905141509272_Intergrate-AspnetIdentity.Designer.cs">
-      <DependentUpon>201905141509272_Intergrate-AspnetIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905231450277_editFieldProduct.cs" />
-    <Compile Include="Migrations\201905231450277_editFieldProduct.Designer.cs">
-      <DependentUpon>201905231450277_editFieldProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905250746582_AddTagField.cs" />
-    <Compile Include="Migrations\201905250746582_AddTagField.Designer.cs">
-      <DependentUpon>201905250746582_AddTagField.cs</DependentUpon>
+    <Compile Include="Migrations\201905300411187_UpdataDemo.cs" />
+    <Compile Include="Migrations\201905300411187_UpdataDemo.Designer.cs">
+      <DependentUpon>201905300411187_UpdataDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,23 +107,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905060450176_InitialDB.resx">
-      <DependentUpon>201905060450176_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905300402069_InitialDB.resx">
+      <DependentUpon>201905300402069_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905140801255_AddErrorTable.resx">
-      <DependentUpon>201905140801255_AddErrorTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905140903547_UpdateDataBase.resx">
-      <DependentUpon>201905140903547_UpdateDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905141509272_Intergrate-AspnetIdentity.resx">
-      <DependentUpon>201905141509272_Intergrate-AspnetIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905231450277_editFieldProduct.resx">
-      <DependentUpon>201905231450277_editFieldProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905250746582_AddTagField.resx">
-      <DependentUpon>201905250746582_AddTagField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905300411187_UpdataDemo.resx">
+      <DependentUpon>201905300411187_UpdataDemo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

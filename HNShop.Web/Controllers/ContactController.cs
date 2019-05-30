@@ -1,29 +1,28 @@
 ﻿using AutoMapper;
+using BotDetect.Web.Mvc;
+using HNShop.Common;
 using HNShop.Model.Models;
 using HNShop.Service;
 using HNShop.Web.Infrastructure.Extensions;
 using HNShop.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace HNShop.Web.Controllers
 {
     public class ContactController : Controller
     {
-        IContactDetailService _contactDetailService;
-        IFeedbackService _feedbackService;
+        private IContactDetailService _contactDetailService;
+        private IFeedbackService _feedbackService;
+
         public ContactController(IContactDetailService contactDetailService, IFeedbackService feedbackService)
         {
             this._contactDetailService = contactDetailService;
             this._feedbackService = feedbackService;
         }
+
         // GET: Contact
         public ActionResult Index()
         {
-
             FeedbackViewModel viewModel = new FeedbackViewModel();
             viewModel.ContactDetail = GetDetail();
             return View(viewModel);
@@ -42,7 +41,6 @@ namespace HNShop.Web.Controllers
 
                 ViewData["SuccessMsg"] = "Gửi phản hồi thành công";
 
-
                 string content = System.IO.File.ReadAllText(Server.MapPath("/Assets/client/template/contact_template.html"));
                 content = content.Replace("{{Name}}", feedbackViewModel.Name);
                 content = content.Replace("{{Email}}", feedbackViewModel.Email);
@@ -55,7 +53,6 @@ namespace HNShop.Web.Controllers
                 feedbackViewModel.Email = "";
             }
             feedbackViewModel.ContactDetail = GetDetail();
-
 
             return View("Index", feedbackViewModel);
         }

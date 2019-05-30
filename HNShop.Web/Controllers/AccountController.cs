@@ -1,4 +1,5 @@
-﻿using HNShop.Common;
+﻿using BotDetect.Web.Mvc;
+using HNShop.Common;
 using HNShop.Model.Models;
 using HNShop.Web.App_Start;
 using HNShop.Web.Models;
@@ -6,8 +7,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -49,10 +48,11 @@ namespace HNShop.Web.Controllers
                 _userManager = value;
             }
         }
+
         public AccountController()
         {
-
         }
+
         // GET: Account
         public ActionResult Login(string returnUrl)
         {
@@ -91,7 +91,6 @@ namespace HNShop.Web.Controllers
             return View(model);
         }
 
-
         [HttpGet]
         public ActionResult Register()
         {
@@ -125,11 +124,9 @@ namespace HNShop.Web.Controllers
                     FullName = model.FullName,
                     PhoneNumber = model.PhoneNumber,
                     Address = model.Address
-
                 };
 
                 await _userManager.CreateAsync(user, model.Password);
-
 
                 var adminUser = await _userManager.FindByEmailAsync(model.Email);
                 if (adminUser != null)
@@ -141,7 +138,6 @@ namespace HNShop.Web.Controllers
 
                 MailHelper.SendMail(adminUser.Email, "Đăng ký thành công", content);
 
-
                 ViewData["SuccessMsg"] = "Đăng ký thành công";
             }
 
@@ -149,7 +145,6 @@ namespace HNShop.Web.Controllers
         }
 
         [HttpPost]
-
         [ValidateAntiForgeryToken]
         public ActionResult LogOut()
         {
