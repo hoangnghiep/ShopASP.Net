@@ -12,6 +12,18 @@ namespace HNShop.Web
             routes.IgnoreRoute("{*botdetect}", new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
+               name: "Confirm Order",
+               url: "xac-nhan-don-hang.html",
+               defaults: new { controller = "ShoppingCart", action = "ConfirmOrder", id = UrlParameter.Optional },
+               namespaces: new string[] { "HNShop.Web.Controllers" }
+              );
+            routes.MapRoute(
+               name: "Cancel Order",
+               url: "huy-don-hang.html",
+               defaults: new { controller = "ShoppingCart", action = "CancelOrder", id = UrlParameter.Optional },
+               namespaces: new string[] { "HNShop.Web.Controllers" }
+              );
+            routes.MapRoute(
                  name: "Contact",
                  url: "lien-he.html",
                  defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
@@ -30,23 +42,34 @@ namespace HNShop.Web
                  namespaces: new string[] { "HNShop.Web.Controllers" }
              );
             routes.MapRoute(
-               name: "Register",
-               url: "dang-ky.html",
-               defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
-               namespaces: new string[] { "HNShop.Web.Controllers" }
+                    name: "Register",
+                    url: "dang-ky.html",
+                    defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
+                    namespaces: new string[] { "HNShop.Web.Controllers" }
+               );
+            routes.MapRoute(
+                    name: "Cart",
+                    url: "gio-hang.html",
+                    defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+                    namespaces: new string[] { "HNShop.Web.Controllers" }
+            );
+            routes.MapRoute(
+                    name: "Checkout",
+                    url: "thanh-toan.html",
+                    defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+                    namespaces: new string[] { "HNShop.Web.Controllers" }
            );
             routes.MapRoute(
                    name: "Page",
                    url: "trang/{alias}.html",
-                   defaults: new { controller = "Page", action = "Index", alias = UrlParameter.Optional },
+                   defaults: new { controller = "Page", action = "Checkout", alias = UrlParameter.Optional },
                    namespaces: new string[] { "HNShop.Web.Controllers" }
                );
-
             routes.MapRoute(
                  name: "Product Category",
                  url: "{alias}.pc-{id}.html",
                  defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
-                   namespaces: new string[] { "HNShop.Web.Controllers" }
+                 namespaces: new string[] { "HNShop.Web.Controllers" }
              );
 
             routes.MapRoute(
@@ -59,14 +82,14 @@ namespace HNShop.Web
                  name: "TagList",
                  url: "tag/{tagId}.html",
                  defaults: new { controller = "Product", action = "ListByTag", tagId = UrlParameter.Optional },
-                   namespaces: new string[] { "HNShop.Web.Controllers" }
+                 namespaces: new string[] { "HNShop.Web.Controllers" }
              );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                  namespaces: new string[] { "HNShop.Web.Controllers" }
-            );
+                namespaces: new string[] { "HNShop.Web.Controllers" }
+                );
         }
     }
 }

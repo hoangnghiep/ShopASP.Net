@@ -1,18 +1,17 @@
 ﻿(function (app) {
     app.controller('productEditController', productEditController);
 
-    productEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams', 'commonService'];
+    productEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService', '$stateParams'];
 
-    function productEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
-        $scope.product = {}
+    function productEditController(apiService, $scope, notificationService, $state, commonService, $stateParams) {
+        $scope.product = {};
         $scope.ckeditorOptions = {
             languague: 'vi',
             height: '200px'
         }
-
         $scope.UpdateProduct = UpdateProduct;
-        $scope.GetSeoTitle = GetSeoTitle;
         $scope.moreImages = [];
+        $scope.GetSeoTitle = GetSeoTitle;
 
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
@@ -20,13 +19,13 @@
 
         function loadProductDetail() {
             apiService.get('api/product/getbyid/' + $stateParams.id, null, function (result) {
+                console.log(result.data);
                 $scope.product = result.data;
                 $scope.moreImages = JSON.parse($scope.product.MoreImages);
             }, function (error) {
                 notificationService.displayError(error.data);
             });
         }
-
         function UpdateProduct() {
             $scope.product.MoreImages = JSON.stringify($scope.moreImages)
             apiService.put('api/product/update', $scope.product,
@@ -37,9 +36,9 @@
                     notificationService.displayError('Cập nhật không thành công.');
                 });
         }
-        function loadParentCategory() {
+        function loadProductCategory() {
             apiService.get('api/productcategory/getallparents', null, function (result) {
-                $scope.parentCategories = result.data;
+                $scope.productCategories = result.data;
             }, function () {
                 console.log('Cannot get list parent');
             });
@@ -63,7 +62,7 @@
             }
             finder.popup();
         }
-        loadParentCategory();
+        loadProductCategory();
         loadProductDetail();
     }
 

@@ -29,12 +29,10 @@
                 @Html.TextBoxFor(model => model.Address)
                 <span>Số điện thoại<label>*</label></span>
                 @Html.TextBoxFor(model => model.PhoneNumber)
-
                 <span>Tài khoản<label>*</label></span>
                 @Html.TextBoxFor(model => model.UserName)
                 <span>Mật khẩu<label>*</label></span>
                 @Html.PasswordFor(model => model.Password)
-
                 @{
                     MvcCaptcha registerCaptcha = new MvcCaptcha("registerCaptcha");
                 }

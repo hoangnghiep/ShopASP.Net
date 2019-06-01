@@ -1,7 +1,10 @@
 ﻿@model HNShop.Web.Models.FeedbackViewModel
 @using BotDetect.Web.Mvc;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liên hệ";
+    ViewBag.MetaKeyword = "liên hệ";
+    ViewBag.MetaDescription = "Thông tin liên hệ của TEDU SHOP";
+
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 @section footerJS{
@@ -9,6 +12,7 @@
     <script src="~/Assets/client/js/controllers/contact.js"></script>
 }
 <style>
+
     #map {
         height: 100%;
     }
@@ -34,7 +38,6 @@
             <div id="map"></div>
         </div>
     </div>
-
     <div class="reservation_top">
         <div class="contact_right">
             <h3>Gửi thông tin liên hệ</h3>

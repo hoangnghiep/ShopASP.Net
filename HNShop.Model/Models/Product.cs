@@ -31,6 +31,7 @@ namespace HNShop.Model.Models
 
         public decimal Price { set; get; }
         public decimal? PromotionPrice { set; get; }
+        public decimal OriginalPrice { set; get; }
         public int? Warranty { set; get; }
 
         [MaxLength(500)]

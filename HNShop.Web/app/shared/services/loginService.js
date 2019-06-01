@@ -19,8 +19,9 @@
                     authenticationService.setTokenInfo(userInfo);
                     authData.authenticationData.IsAuthenticated = true;
                     authData.authenticationData.userName = userName;
+                    authData.authenticationData.accessToken = userInfo.accessToken;
                     deferred.resolve(null);
-                    }, function (err, status) {
+                }, function (err, status) {
                     authData.authenticationData.IsAuthenticated = false;
                     authData.authenticationData.userName = "";
                     deferred.resolve(err);
@@ -30,9 +31,12 @@
             }
 
             this.logOut = function () {
-                authenticationService.removeToken();
-                authData.authenticationData.IsAuthenticated = false;
-                authData.authenticationData.userName = "";
+                apiService.post('/api/account/logout', null, function (response) {
+                    authenticationService.removeToken();
+                    authData.authenticationData.IsAuthenticated = false;
+                    authData.authenticationData.userName = "";
+                    authData.authenticationData.accessToken = "";
+                }, null);
             }
         }]);
 })(angular.module('hnshop.common'));

@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../assets/admin/libs/angular/angular.js" />
+﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 
 (function () {
     angular.module('hnshop.product_categories', ['hnshop.common']).config(config);
@@ -6,13 +6,14 @@
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function config($stateProvider, $urlRouterProvider) {
+
         $stateProvider
             .state('product_categories', {
-                url: "/product_categories",
-                parent: 'base',
-                templateUrl: "/app/components/product_categories/productCategoryListView.html",
-                controller: "productCategoryListController"
-            })
+            url: "/product_categories",
+            templateUrl: "/app/components/product_categories/productCategoryListView.html",
+            parent: 'base',
+            controller: "productCategoryListController"
+        })
             .state('add_product_category', {
                 url: "/add_product_category",
                 parent: 'base',
@@ -21,9 +22,9 @@
             })
             .state('edit_product_category', {
                 url: "/edit_product_category/:id",
-                parent: 'base',
                 templateUrl: "/app/components/product_categories/productCategoryEditView.html",
-                controller: "productCategoryEditController"
+                controller: "productCategoryEditController",
+                parent: 'base',
             });
     }
 })();

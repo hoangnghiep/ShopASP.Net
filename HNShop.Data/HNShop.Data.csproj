@@ -69,8 +69,16 @@
     <Compile Include="Migrations\201905300411187_UpdataDemo.Designer.cs">
       <DependentUpon>201905300411187_UpdataDemo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906011044383_updateData.cs" />
+    <Compile Include="Migrations\201906011044383_updateData.Designer.cs">
+      <DependentUpon>201906011044383_updateData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
@@ -112,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905300411187_UpdataDemo.resx">
       <DependentUpon>201905300411187_UpdataDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906011044383_updateData.resx">
+      <DependentUpon>201906011044383_updateData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

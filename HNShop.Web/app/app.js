@@ -3,6 +3,10 @@
     angular.module('hnshop',
         ['hnshop.product_categories',
             'hnshop.products',
+            'hnshop.application_groups',
+            'hnshop.application_roles',
+            'hnshop.application_users',
+            'hnshop.statistics',
             'hnshop.common'])
         .config(config)
         .config(configAuthentication);

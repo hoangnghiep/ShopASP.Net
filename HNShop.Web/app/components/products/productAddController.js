@@ -1,7 +1,7 @@
 ﻿(function (app) {
     app.controller('productAddController', productAddController);
 
-    productAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
+    productAddController.$inject = ['apiService', '$scope', 'notificationService', '$state','commonService'];
 
     function productAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.product = {
@@ -12,15 +12,17 @@
             languague: 'vi',
             height: '200px'
         }
-
-        $scope.moreImages = [];
         $scope.AddProduct = AddProduct;
+
         $scope.GetSeoTitle = GetSeoTitle;
 
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
         }
+
+
         function AddProduct() {
+
             $scope.product.MoreImages = JSON.stringify($scope.moreImages)
             apiService.post('api/product/create', $scope.product,
                 function (result) {
@@ -47,17 +49,18 @@
             finder.popup();
         }
 
+        $scope.moreImages = [];
+
         $scope.ChooseMoreImage = function () {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
                 $scope.$apply(function () {
                     $scope.moreImages.push(fileUrl);
                 })
-
+             
             }
             finder.popup();
         }
-
         loadProductCategory();
     }
 

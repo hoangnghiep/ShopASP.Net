@@ -1,12 +1,14 @@
-﻿using HNShop.Data.Infrastructure;
+﻿using HNShop.Common.ViewModels;
+using HNShop.Data.Infrastructure;
 using HNShop.Model.Models;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace HNShop.Data.Repositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        IEnumerable<Order> GetRevenueStatistic(string fromDate, string toDate);
+        IEnumerable<RevenueStatisticViewModel> GetRevenueStatistic(string fromDate, string toDate);
     }
 
     public class OrderRepository : RepositoryBase<Order>, IOrderRepository
@@ -15,9 +17,13 @@ namespace HNShop.Data.Repositories
         {
         }
 
-        public IEnumerable<Order> GetRevenueStatistic(string fromDate, string toDate)
+        public IEnumerable<RevenueStatisticViewModel> GetRevenueStatistic(string fromDate, string toDate)
         {
-            throw new System.NotImplementedException();
+            var parameters = new SqlParameter[]{
+                new SqlParameter("@fromDate",fromDate),
+                new SqlParameter("@toDate",toDate)
+            };
+            return DbContext.Database.SqlQuery<RevenueStatisticViewModel>("GetRevenueStatistic @fromDate,@toDate", parameters);
         }
     }
 }

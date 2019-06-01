@@ -1,17 +1,19 @@
 ﻿@model HNShop.Web.Infrastructure.Core.PaginationSet<HNShop.Web.Models.ProductViewModel>
 @{
+
     var tag = (HNShop.Web.Models.TagViewModel)ViewBag.Tag;
-    ViewBag.Title = "ListByTag";
+    var pageIndex = Model.Page;
+    ViewBag.Title = pageIndex == 1 ? "Kết quả tìm kiếm cho tag " + tag.Name : "Kết quả tìm kiếm cho tag " + tag.Name + " - Trang " + pageIndex;
+    ViewBag.MetaKeyword = pageIndex == 1 ? "Kết quả tìm kiếm cho tag " + tag.Name : "Kết quả tìm kiếm cho tag " + tag.Name + " - Trang " + pageIndex;
+    ViewBag.MetaDescription = pageIndex == 1 ? "Kết quả tìm kiếm cho tag " + tag.Name : "Kết quả tìm kiếm cho tag " + tag.Name + " - Trang " + pageIndex;
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
-
 <div class="women-product">
     @if (Model.Count > 0)
     {
         <div class="w_content">
             <div class="women">
                 <a href=""><h4>Tag: @tag.Name - <span>@Model.TotalCount sản phẩm</span> </h4></a>
-
                 <div class="clearfix"> </div>
             </div>
         </div>
@@ -58,7 +60,6 @@
                                 </a>
                             </li>
                         }
-
                         @for (int i = startPageIndex; i <= endPageIndex; i++)
                         {
                             if (Model.Page == i)

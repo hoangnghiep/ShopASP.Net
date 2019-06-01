@@ -18,6 +18,24 @@
 
         $scope.deleteMultiple = deleteMultiple;
 
+        function deleteMultiple() {
+            var listId = [];
+            $.each($scope.selected, function (i, item) {
+                listId.push(item.ID);
+            });
+            var config = {
+                params: {
+                    checkedProductCategories: JSON.stringify(listId)
+                }
+            }
+            apiService.del('api/productcategory/deletemulti', config, function (result) {
+                notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                search();
+            }, function (error) {
+                notificationService.displayError('Xóa không thành công');
+            });
+        }
+
         $scope.isAll = false;
         function selectAll() {
             if ($scope.isAll === false) {
@@ -43,26 +61,6 @@
             }
         }, true);
 
-        function deleteMultiple() {
-            var listId = [];
-            $.each($scope.selected, function (i, item) {
-                listId.push(item.ID);
-            });
-            var config = {
-                params: {
-                    checkedProductCategories: JSON.stringify(listId)
-                }
-            }
-            $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
-                apiService.del('api/productcategory/deletemulti', config, function (result) {
-                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                    search();
-                }, function (error) {
-                    notificationService.displayError('Xóa không thành công');
-                });
-            });
-            
-        }
         function deleteProductCategory(id) {
             $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
                 var config = {
@@ -92,6 +90,7 @@
                     pageSize: 20
                 }
             }
+            $scope.loading = true;
             apiService.get('/api/productcategory/getall', config, function (result) {
                 if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
@@ -100,8 +99,12 @@
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
                 $scope.totalCount = result.data.TotalCount;
+                $scope.loading = false;
+
             }, function () {
                 console.log('Load productcategory failed.');
+                $scope.loading = false;
+
             });
         }
 
