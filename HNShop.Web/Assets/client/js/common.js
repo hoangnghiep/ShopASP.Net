@@ -3,6 +3,27 @@
         common.registerEvents();
     },
     registerEvents: function () {
+        $('.btnAddToCart').off('click').on('click', function (e) {
+            e.preventDefault();
+            var productId = parseInt($(this).data('id'));
+            $.ajax({
+                url: '/ShoppingCart/Add',
+                data: {
+                    productId: productId
+                },
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status) {
+                        alert('Thêm sản phẩm thành công.');
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+
         $("#txtKeyword").autocomplete({
             minLength: 0,
             source: function (request, response) {
@@ -25,31 +46,13 @@
                 $("#txtKeyword").val(ui.item.label);
                 return false;
             }
-        }).autocomplete("instance")._renderItem = function (ul, item) {
-            return $("<li>")
-                .append("<a>" + item.label + "</a>")
-                .appendTo(ul);
-        };
-        $('.btnAddToCart').off('click').on('click', function (e) {
-            e.preventDefault();
-            var productId = parseInt($(this).data('id'));
-            $.ajax({
-                url: '/ShoppingCart/Add',
-                data: {
-                    productId: productId
-                },
-                type: 'POST',
-                dataType: 'json',
-                success: function (response) {
-                    if (response.status) {
-                        alert('Thêm sản phẩm thành công.');
-                    }
-                    else {
-                        alert(response.message);
-                    }
-                }
-            });
-        });
+        })
+            .autocomplete("instance")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .append("<a>" + item.label + "</a>")
+                    .appendTo(ul);
+            };
+
         $('#btnLogout').off('click').on('click', function (e) {
             e.preventDefault();
             $('#frmLogout').submit();
